@@ -1,6 +1,6 @@
 trait Censor {
 
-  def replace(word: String): String = {
+  def replace(word: String) : String = {
     if (word == "Shoot") {
       "Pucky"
     } else if (word == "Darn") {
@@ -23,10 +23,27 @@ case class CurseWords(val words: List[String])
 
 object Main {
 
+  def showList(list: List[String]): Unit = {
+    if (!list.isEmpty) {
+      println(list.head)
+      showList(list.tail)
+    }
+  }
+
   def main(args: Array[String]){
 
-    // TODO
+    val l: List[String] = List("Tony", "Geezer", "Shoot", "Darn", "Ozzy", "Bill", "Shoot")
+    val cw: CurseWords = new CurseWords(l)
+
+    println("Original List: \n")
+    showList(l)
+
+    println()
+
+    println("New List: \n")
+    showList(cw.generateList())
 
   }
 
 }
+
