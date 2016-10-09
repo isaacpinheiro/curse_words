@@ -23,7 +23,7 @@ case class CurseWords(val words: List[String])
 
 object Main {
 
-  def showList(list: List[String]): Unit = {
+  def showList(list: List[String]) : Unit = {
     if (!list.isEmpty) {
       println(list.head)
       showList(list.tail)
