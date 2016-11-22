@@ -1,13 +1,9 @@
 trait Censor {
 
-  def replace(word: String) : String = {
-    if (word == "Shoot") {
-      "Pucky"
-    } else if (word == "Darn") {
-      "Beans"
-    } else {
-      word
-    }
+  def replace(word: String): String = word match {
+    case "Shoot" => "Pucky"
+    case "Darn" => "Beans"
+    case _ => word
   }
 
 }
@@ -15,7 +11,7 @@ trait Censor {
 case class CurseWords(val words: List[String])
   extends Censor {
 
-  def generateList() : List[String] = {
+  def generateList(): List[String] = {
     words.map((x) => replace(x))
   }
 
@@ -23,7 +19,7 @@ case class CurseWords(val words: List[String])
 
 object Main {
 
-  def showList(list: List[String]) : Unit = {
+  def showList(list: List[String]): Unit = {
     if (!list.isEmpty) {
       println(list.head)
       showList(list.tail)
